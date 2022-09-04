@@ -3,17 +3,19 @@
     [
       'name' => 'Home',
       'route' => 'home',
+      'active' => 'home',
     ],
     [
       'name' => 'Cursos',
       'route' => 'courses.index',
+      'active' => 'courses.*',
     ],
   ];
 @endphp
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
   <!-- Primary Navigation Menu -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="container">
     <div class="flex justify-between h-16">
       <div class="flex">
         <!-- Logo -->
@@ -28,7 +30,7 @@
           @foreach ($links as $item)
             <x-jet-nav-link 
               href="{{ route($item['route']) }}" 
-              :active="request()->routeIs($item['route'])"
+              :active="request()->routeIs($item['active'])"
             >
               {{ __($item['name']) }}
             </x-jet-nav-link>
@@ -178,7 +180,7 @@
       @foreach ($links as $item)
         <x-jet-responsive-nav-link 
           href="{{ route($item['route']) }}" 
-          :active="request()->routeIs($item['route'])"
+          :active="request()->routeIs($item['active'])"
         >
           {{ __($item['name']) }}
         </x-jet-responsive-nav-link>

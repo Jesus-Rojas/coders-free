@@ -26,6 +26,21 @@ class Course extends Model
         );
     }
 
+    // Sirve para url amigable. Lo estoy usando desde la ruta por lo cual no lo estoy usando, me sirve para referencia en proyectos viejos.
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
+
+    // Query Scopes, no estoy usando este metodo me sirve de referencia para otro caso de funciones dinamicas desde el modelo.
+    // public function scopeCategory($query, $idCategory)
+    // {
+    //     if ($idCategory) {
+    //         return $query->where('category_id', $idCategory);
+    //     }
+    //     return $query;
+    // }
+
     // Relacion uno a muchos
     public function reviews()
     {

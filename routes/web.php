@@ -13,5 +13,5 @@ Route::group([
 ], function () {
     Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
     Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
-    Route::get('cursos/{course:slug}', fn () => ('asdsa'))->name('courses.show');
+    Route::get('cursos/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
 });
