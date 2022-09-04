@@ -4,10 +4,10 @@
       'name' => 'Home',
       'route' => 'home',
     ],
-    // [
-    //   'name' => 'Dashboard',
-    //   'route' => 'dashboard',
-    // ],
+    [
+      'name' => 'Cursos',
+      'route' => 'courses.index',
+    ],
   ];
 @endphp
 

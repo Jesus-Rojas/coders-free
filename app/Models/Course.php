@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +11,20 @@ class Course extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'status'];
+    protected $withCount = ['students', 'reviews'];
     public static $statusEnum= [
         1, // Borrador
         2, // Revision
         3, // Publicado
     ];
+
+    protected function rating(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => ($this->reviews_count ? round($this->reviews->avg('rating'), 1) : 5),
+            // set: fn ($value) => strtolower($value),
+        );
+    }
 
     // Relacion uno a muchos
     public function reviews()

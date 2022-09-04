@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\{
+    CourseController,
+    HomeController,
+};
 use Illuminate\Support\Facades\Route;
 
-Route::view('', 'welcome')->name('home');
+Route::get('', HomeController::class)->name('home');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::group([
+    'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified'],
+], function () {
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
+    Route::get('cursos/{course:slug}', fn () => ('asdsa'))->name('courses.show');
 });
