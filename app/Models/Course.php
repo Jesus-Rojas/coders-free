@@ -9,6 +9,7 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id', 'status'];
     public static $statusEnum= [
         1, // Borrador
         2, // Revision

@@ -9,6 +9,7 @@ class Reaction extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
     public static $valueEnum= [
         1, // LIKE
         2, // DISLIKE

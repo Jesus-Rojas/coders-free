@@ -9,6 +9,8 @@ class Audience extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // Relacion uno a muchos inversa
     public function course()
     {
